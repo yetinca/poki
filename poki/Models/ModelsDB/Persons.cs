@@ -4,7 +4,10 @@ using System.Linq;
 using System.Web;
 
 namespace poki.Models.ModelsDB
-{[Serializable]
+
+{
+    [Table("persons")]
+    [Serializable]
   public class Persons : BaseEntity
   {
     

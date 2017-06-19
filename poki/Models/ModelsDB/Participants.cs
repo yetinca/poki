@@ -4,7 +4,9 @@ using System.Linq;
 using System.Web;
 
 namespace poki.Models.ModelsDB
-{[Serializable]
+{
+    [Table("participants")]
+    [Serializable]
   public class Participants : BaseEntity
   {
     public int GrupaID { get; set; }

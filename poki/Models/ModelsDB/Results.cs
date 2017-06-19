@@ -2,7 +2,8 @@
 
 namespace poki.Models.ModelsDB
 {
-  [Serializable]
+    [Table("results")]
+    [Serializable]
   public class Results: BaseEntity
   {
     public int ParticipantID { get; set; }

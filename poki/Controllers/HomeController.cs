@@ -20,7 +20,7 @@ namespace poki.Controllers
     [HttpGet]
     public JsonResult GetPersons()
     {
-      var list = dbContext.Persons;
+      var list = dbContext.Persons.to;
 
       return Json(list,JsonRequestBehavior.AllowGet);
     }

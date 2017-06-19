@@ -5,6 +5,7 @@ using System.Web;
 
 namespace poki.Models.ModelsDB
 {
+[Table("groups")]
   [Serializable]
   public class Groups: BaseEntity
 
