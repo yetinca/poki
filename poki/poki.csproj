@@ -64,6 +64,7 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -158,7 +159,6 @@
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
-    <Compile Include="App_Start\MapperProfile.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\HelpPage\ApiDescriptionExtensions.cs" />
@@ -191,25 +191,43 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
+    <Compile Include="Core\IRepository.cs" />
+    <Compile Include="Core\Repository.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="group.cs">
+      <DependentUpon>PokiModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Logic\SystemLogin.cs" />
-    <Compile Include="Models\BaseEntity.cs" />
-    <Compile Include="Models\Configuration\GroupsConfig.cs" />
-    <Compile Include="Models\Configuration\ParticipantConfig.cs" />
-    <Compile Include="Models\Configuration\PersonsConfig.cs" />
-    <Compile Include="Models\Configuration\ResultsConfig.cs" />
-    <Compile Include="Models\DataContext.cs" />
-    <Compile Include="Models\ModelsApp\GroupsApp.cs" />
-    <Compile Include="Models\ModelsApp\ParticipantApp.cs" />
-    <Compile Include="Models\ModelsApp\PersonsApp.cs" />
-    <Compile Include="Models\ModelsApp\ResultsApp.cs" />
-    <Compile Include="Models\ModelsDB\Groups.cs" />
-    <Compile Include="Models\ModelsDB\Participants.cs" />
-    <Compile Include="Models\ModelsDB\Persons.cs" />
-    <Compile Include="Models\ModelsDB\Results.cs" />
+    <Compile Include="participant.cs">
+      <DependentUpon>PokiModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Person.cs">
+      <DependentUpon>PokiModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PokiModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PokiModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PokiModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PokiModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PokiModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PokiModel.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="result.cs">
+      <DependentUpon>PokiModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sysdiagram.cs">
+      <DependentUpon>PokiModel.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\HelpPage\HelpPage.css" />
@@ -218,6 +236,16 @@
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="PokiModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>PokiModel.edmx</DependentUpon>
+      <LastGenOutput>PokiModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="PokiModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>PokiModel.edmx</DependentUpon>
+      <LastGenOutput>PokiModel.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Areas\HelpPage\Views\Web.config" />
@@ -242,6 +270,13 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <EntityDeploy Include="PokiModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>PokiModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="PokiModel.edmx.diagram">
+      <DependentUpon>PokiModel.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.1.1.js" />
     <Content Include="Scripts\jquery-3.1.1.min.js" />
@@ -252,7 +287,9 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -287,6 +324,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Scripts\jquery-3.1.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
