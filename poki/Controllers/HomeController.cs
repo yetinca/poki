@@ -15,12 +15,7 @@ namespace poki.Controllers
 
     public ActionResult Index()
     {
-      //ViewBag.Title = "Home Page";
-      //SystemLogin user = new SystemLogin();
-      //ViewBag.Message = user.Get();
-      // var query = from c in db.Persons
-      //            orderby c.Name
-      //            select c;
+   
       return View();
     }
     
