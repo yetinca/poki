@@ -196,38 +196,28 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="group.cs">
-      <DependentUpon>PokiModel.tt</DependentUpon>
-    </Compile>
+    <Compile Include="IUnitOfWork.cs" />
     <Compile Include="Logic\SystemLogin.cs" />
-    <Compile Include="participant.cs">
-      <DependentUpon>PokiModel.tt</DependentUpon>
+    <Compile Include="Migrations\201707111532120_InitialState.cs" />
+    <Compile Include="Migrations\201707111532120_InitialState.Designer.cs">
+      <DependentUpon>201707111532120_InitialState.cs</DependentUpon>
     </Compile>
-    <Compile Include="Person.cs">
-      <DependentUpon>PokiModel.tt</DependentUpon>
+    <Compile Include="Migrations\201707111538422_TestPsych.cs" />
+    <Compile Include="Migrations\201707111538422_TestPsych.Designer.cs">
+      <DependentUpon>201707111538422_TestPsych.cs</DependentUpon>
     </Compile>
-    <Compile Include="PokiModel.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>PokiModel.Context.tt</DependentUpon>
+    <Compile Include="Migrations\201707111546013_PsychTestAddVirtual.cs" />
+    <Compile Include="Migrations\201707111546013_PsychTestAddVirtual.Designer.cs">
+      <DependentUpon>201707111546013_PsychTestAddVirtual.cs</DependentUpon>
     </Compile>
-    <Compile Include="PokiModel.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>PokiModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="PokiModel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>PokiModel.edmx</DependentUpon>
-    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\groups.cs" />
+    <Compile Include="Models\PokiContext.cs" />
+    <Compile Include="Models\participants.cs" />
+    <Compile Include="Models\Persons.cs" />
+    <Compile Include="Models\results.cs" />
+    <Compile Include="Models\TestPsych.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="result.cs">
-      <DependentUpon>PokiModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="sysdiagram.cs">
-      <DependentUpon>PokiModel.tt</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\HelpPage\HelpPage.css" />
@@ -236,16 +226,6 @@
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="PokiModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>PokiModel.edmx</DependentUpon>
-      <LastGenOutput>PokiModel.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="PokiModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>PokiModel.edmx</DependentUpon>
-      <LastGenOutput>PokiModel.cs</LastGenOutput>
-    </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Areas\HelpPage\Views\Web.config" />
@@ -269,13 +249,6 @@
     <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <EntityDeploy Include="PokiModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>PokiModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="PokiModel.edmx.diagram">
-      <DependentUpon>PokiModel.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.1.1.js" />
@@ -303,6 +276,7 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\GetPersons.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -327,6 +301,17 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201707111532120_InitialState.resx">
+      <DependentUpon>201707111532120_InitialState.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201707111538422_TestPsych.resx">
+      <DependentUpon>201707111538422_TestPsych.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201707111546013_PsychTestAddVirtual.resx">
+      <DependentUpon>201707111546013_PsychTestAddVirtual.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

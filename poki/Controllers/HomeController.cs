@@ -1,27 +1,34 @@
-﻿using System.Linq;
-using System.Web.Mvc;
-using poki.Logic;
-
+﻿using System.Web.Mvc;
+using poki.Models;
 
 namespace poki.Controllers
 {
   public class HomeController : Controller
   {
-    PokiDBContext db = new PokiDBContext();
+    PokiContext db = new PokiContext();
+    private readonly IUnitOfWork _unitOfWork;
+
+    public HomeController(IUnitOfWork unitOfWork)
+    {
+      _unitOfWork = unitOfWork;
+    }
+
     public ActionResult Index()
     {
-      ViewBag.Title = "Home Page";
-      SystemLogin user = new SystemLogin();
-      ViewBag.Message = user.Get();
-
+      //ViewBag.Title = "Home Page";
+      //SystemLogin user = new SystemLogin();
+      //ViewBag.Message = user.Get();
+      // var query = from c in db.Persons
+      //            orderby c.Name
+      //            select c;
       return View();
     }
-    [HttpGet]
+    
     public ActionResult GetPersons()
     {
-      db.Persons.ToList();
+      
      
-      return View();
+      return View(_unitOfWork.Resolve<Persons>());
     }
   }
 }
