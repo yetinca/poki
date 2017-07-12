@@ -1,4 +1,5 @@
 ﻿using System.Web.Mvc;
+using poki.Core;
 using poki.Models;
 
 namespace poki.Controllers
@@ -7,10 +8,12 @@ namespace poki.Controllers
   {
     PokiContext db = new PokiContext();
     private readonly IUnitOfWork _unitOfWork;
+    private readonly IRepository<Persons> _personsRepository;
 
     public HomeController(IUnitOfWork unitOfWork)
     {
       _unitOfWork = unitOfWork;
+      _personsRepository = _unitOfWork.Resolve<Persons>();
     }
 
     public ActionResult Index()
@@ -23,7 +26,7 @@ namespace poki.Controllers
     {
       
      
-      return View(_unitOfWork.Resolve<Persons>());
+      return View(_personsRepository.GetAll());
     }
   }
 }
