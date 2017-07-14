@@ -7,6 +7,10 @@ namespace poki.Logic
 {
   public class SystemLogin
   {
+    public SystemLogin()
+    {
+
+    }
     public string Get()
     {
       return (Environment.UserName);

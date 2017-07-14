@@ -1,8 +1,9 @@
-﻿
+﻿@model IEnumerable<poki.Models.Persons>
 <div>
- @*@foreach (var c in Model){
-   <p></p>
-
- }*@
-
+@foreach (var c in Model)
+{
+  <ul>
+    <li>@c.Name</li>
+  </ul>
+}
 </div>

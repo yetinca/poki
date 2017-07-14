@@ -3,14 +3,15 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Linq.Expressions;
+using poki.Models;
 
 namespace poki.Core
 {
   public class Repository<TEntity>: IRepository<TEntity> where TEntity:class
   {
-    protected readonly DbContext Context;
+    protected readonly PokiContext Context;
 
-    public Repository(DbContext context)
+    public Repository(PokiContext context)
     {
       Context = context;
 

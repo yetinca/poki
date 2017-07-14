@@ -4,11 +4,11 @@ namespace poki
 {
   public interface IUnitOfWork: IDisposable
   {
-    IRepository<TEntity> Resolve<TEntity>() where TEntity:class;
+    IPersonRepository Persons { get; }
 
     void Save();
 
-    void Dispose();
+    new void Dispose();
 
 
   }

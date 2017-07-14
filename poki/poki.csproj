@@ -191,7 +191,9 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
+    <Compile Include="Core\IPersonRepository.cs" />
     <Compile Include="Core\IRepository.cs" />
+    <Compile Include="Core\PersonRepository.cs" />
     <Compile Include="Core\Repository.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

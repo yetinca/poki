@@ -1,4 +1,4 @@
-namespace poki.Models
+﻿namespace poki.Models
 {
     using System;
     using System.Collections.Generic;
@@ -7,7 +7,13 @@ namespace poki.Models
     using System.Data.Entity.Spatial;
 
     public partial class results
+
     {
+        public results()
+    {
+
+    }
+
         public int ID { get; set; }
 
         public int ParticipantID { get; set; }

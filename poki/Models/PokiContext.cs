@@ -10,6 +10,7 @@
     public PokiContext()
         : base("name=PokiConnStr")
     {
+      this.Configuration.LazyLoadingEnabled = false;
     }
 
     public virtual DbSet<groups> groups { get; set; }

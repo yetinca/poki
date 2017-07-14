@@ -1,4 +1,4 @@
-namespace poki.Models
+﻿namespace poki.Models
 {
     using System;
     using System.Collections.Generic;
@@ -8,6 +8,10 @@ namespace poki.Models
 
     public partial class participants
     {
+    public participants()
+    {
+
+    }
         public int ID { get; set; }
 
         public int GrupaID { get; set; }

@@ -9,15 +9,21 @@ namespace poki
   {
     private bool _disposed;
     private readonly PokiContext _context;
+
     public UnitOfWork(PokiContext context)
     {
       _context = context;
 
+      Persons = new PersonRepository(_context);
+
     }
-    public IRepository<TEntity> Resolve<TEntity>() where TEntity : class
-    {
-      return new Repository<TEntity>(_context);
-    }
+    //public IRepository<TEntity> Resolve<TEntity>() where TEntity : class
+    //{
+    //  return new Repository<TEntity>(_context);
+    //}
+
+      public IPersonRepository Persons { get; private set; }
+
 
     public void Save()
     {
