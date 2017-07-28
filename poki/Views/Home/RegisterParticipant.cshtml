@@ -1,0 +1,15 @@
+﻿@model poki.Models.ViewModels.RegisterParticipant
+
+<h2>RegisterParticipant</h2>
+
+@using (Html.BeginForm("AddParticipant", "Home", FormMethod.Post))
+{
+  <div>
+    @Html.TextBoxFor(a => a.Name, new { @class = "form-control" })
+  </div>
+  <div>
+    @Html.TextBoxFor(a => a.PESEL, new { @class = "form-control" })
+  </div>
+  <button class="btn btn-primary">Zapisz</button>
+}
+

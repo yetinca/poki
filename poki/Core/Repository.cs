@@ -9,9 +9,9 @@ namespace poki.Core
 {
   public class Repository<TEntity>: IRepository<TEntity> where TEntity:class
   {
-    protected readonly PokiContext Context;
+    protected readonly DbContext Context;
 
-    public Repository(PokiContext context)
+    public Repository(DbContext context)
     {
       Context = context;
 
@@ -32,6 +32,10 @@ namespace poki.Core
       return Context.Set<TEntity>().Where(predicate);
     }
 
+    public TEntity SingleOrDefault(Expression<Func<TEntity, bool>> predicate)
+    {
+      return Context.Set<TEntity>().SingleOrDefault(predicate);
+    }
     public void Add(TEntity entity)
     {
       Context.Set<TEntity>().Add(entity);

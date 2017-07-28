@@ -1,11 +1,7 @@
-﻿@model IEnumerable<poki.Models.Persons>
+﻿@model poki.Models.Persons
 
 
 
 <h2>GetPersons</h2>
-
-@foreach(var c in Model)
-{
- <li>@c.Name</li>
-}
+<p>@Model.Name   @Model.NickName @Model.PESEL</p>
 

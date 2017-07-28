@@ -1,0 +1,30 @@
+﻿@model IEnumerable<poki.Models.groups>
+
+<div>
+  <h2>Wykaz grup w systemie</h2>
+  <div class="table-responsive">
+    <table id="Persons" class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Nazwa</th>
+          <th>Data</th>
+         
+        </tr>
+      </thead>
+      <tbody>
+        @foreach (var c in Model)
+        {
+          <tr class="participant-item" data-id="@c.ID">
+            <td>@c.Name</td>
+            <td>@c.CreationDate</td>
+
+
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+

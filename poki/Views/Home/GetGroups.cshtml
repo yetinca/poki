@@ -1,0 +1,32 @@
+﻿@model poki.Models.GroupsWithNumberOfParticipants
+
+@{
+    ViewBag.Title = "GetGroups";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div>
+  <h2>Wykaz grup w systemie</h2>
+  <div class="table-responsive">
+    <table id="Groups" class="table table-bordered" >
+      <thead>
+        <tr>
+          <th>Nazwisko</th>
+          <th>Ksywka</th>
+          <th>Pesel</th>
+        </tr>
+      </thead>
+      <tbody>
+
+          <tr >
+            <td>@Model.Name</td>
+            <td>@Model.Data</td>
+            <td>@Model.Number</td>
+
+          </tr>
+        
+      </tbody>
+    </table>
+  </div>
+</div>
+

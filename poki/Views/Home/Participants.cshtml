@@ -1,0 +1,27 @@
+﻿@model IEnumerable<poki.Models.Persons>
+
+<div>
+  <h2>Wykaz osób w systemie</h2>
+  <div class="table-responsive">
+    <table  id="Persons" class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Nazwisko</th>
+          <th>Ksywka</th>
+          <th>Pesel</th>
+        </tr>
+      </thead>
+      <tbody>
+        @foreach(var c in Model)
+        {
+          <tr class="participant-item" data-id="@c.ID" >
+            <td>@c.Name</td>
+            <td>@c.NickName</td>
+            <td>@c.PESEL</td>
+
+          </tr>
+        }
+      </tbody>
+ </table>
+  </div>
+</div>

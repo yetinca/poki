@@ -1,9 +1,13 @@
-﻿@model IEnumerable<poki.Models.Persons>
+﻿
 <div>
-@foreach (var c in Model)
-{
-  <ul>
-    <li>@c.Name</li>
-  </ul>
-}
+  <h2 class="page-header text-center">Portal Oceny i Kontroli Interdyscyplinarnej</h2>
+  <p class="lead text-center">Portal został stworzony do wprowadzania wyników uczestników kursu, a następnie zestawiania ich, analizy oraz weryfikacji. </p>
+<div class="row">
+  <div class="col-md-2">
+    <p>Zalogowany jest: </p>
+  </div>
+  <div class="col-md-offset-0 danger"><a> @ViewBag.login</a>  </div>
+</div>
+
+
 </div>
