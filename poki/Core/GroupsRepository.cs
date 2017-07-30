@@ -4,7 +4,7 @@ using poki.Models;
 
 namespace poki.Core
 {
-  public class GroupsRepository:Repository<groups>, IGroupsRepository
+  public class GroupsRepository:Repository<Groups>, IGroupsRepository
   {
     public GroupsRepository(PokiContext context): base(context)
     {
@@ -15,15 +15,15 @@ namespace poki.Core
       get { return Context as PokiContext; }
     }
 
-    public groups GetGroupWithParticipants(int id)
+    public Groups GetGroupWithParticipants(int id)
     {
-      return PokiContext.groups.Include(a => a.participants).SingleOrDefault(a => a.ID == id);
+      return PokiContext.Groups.Include(a => a.ParticipantsInGroup).SingleOrDefault(a => a.ID == id);
     }
     public GroupsWithNumberOfParticipants GetGroupWithNumber(int id)
     {
 
-      var grupa = PokiContext.groups.Include(a=> a.participants).Where(a=> a.ID==id)
-        .Select(a=> new GroupsWithNumberOfParticipants { Data = a.CreationDate, Name = a.Name, Number = a.participants.Count })
+      var grupa = PokiContext.Groups.Include(a=> a.ParticipantsInGroup).Where(a=> a.ID==id)
+        .Select(a=> new GroupsWithNumberOfParticipants { Data = a.CreationDate, Name = a.Name, Number = a.ParticipantsInGroup.Count, ID=a.ID })
         .Single();
 
 

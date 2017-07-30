@@ -7,8 +7,8 @@ using poki.Models;
 
 namespace poki.Core
 {
-  public interface IPersonRepository: IRepository<Persons>
+  public interface IPersonRepository: IRepository<Participants>
   {
-    Persons GetPersonResults(int ID);
+    Participants GetPersonResults(int ID);
   }
 }

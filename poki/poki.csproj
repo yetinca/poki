@@ -216,13 +216,63 @@
     <Compile Include="Migrations\201707111546013_PsychTestAddVirtual.Designer.cs">
       <DependentUpon>201707111546013_PsychTestAddVirtual.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201707291649301_RenameGroups.cs" />
+    <Compile Include="Migrations\201707291649301_RenameGroups.Designer.cs">
+      <DependentUpon>201707291649301_RenameGroups.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201707291750322_RenameParticipantsInGroup.cs" />
+    <Compile Include="Migrations\201707291750322_RenameParticipantsInGroup.Designer.cs">
+      <DependentUpon>201707291750322_RenameParticipantsInGroup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201707291752548_RenameParticipants.cs" />
+    <Compile Include="Migrations\201707291752548_RenameParticipants.Designer.cs">
+      <DependentUpon>201707291752548_RenameParticipants.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201707291756361_RenameResults.cs" />
+    <Compile Include="Migrations\201707291756361_RenameResults.Designer.cs">
+      <DependentUpon>201707291756361_RenameResults.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201707301406003_CreateAccessLogins.cs" />
+    <Compile Include="Migrations\201707301406003_CreateAccessLogins.Designer.cs">
+      <DependentUpon>201707301406003_CreateAccessLogins.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201707301441045_ConnectResultsWithParticipantsInGroup.cs" />
+    <Compile Include="Migrations\201707301441045_ConnectResultsWithParticipantsInGroup.Designer.cs">
+      <DependentUpon>201707301441045_ConnectResultsWithParticipantsInGroup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201707301516485_CorrectRelationsResults.cs" />
+    <Compile Include="Migrations\201707301516485_CorrectRelationsResults.Designer.cs">
+      <DependentUpon>201707301516485_CorrectRelationsResults.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201707301527437_ModifyRelationInResults.cs" />
+    <Compile Include="Migrations\201707301527437_ModifyRelationInResults.Designer.cs">
+      <DependentUpon>201707301527437_ModifyRelationInResults.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201707301554054_changerelations.cs" />
+    <Compile Include="Migrations\201707301554054_changerelations.Designer.cs">
+      <DependentUpon>201707301554054_changerelations.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201707301926477_AddPytaniaInResults.cs" />
+    <Compile Include="Migrations\201707301926477_AddPytaniaInResults.Designer.cs">
+      <DependentUpon>201707301926477_AddPytaniaInResults.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201707301941300_CreateDescriptionToResults.cs" />
+    <Compile Include="Migrations\201707301941300_CreateDescriptionToResults.Designer.cs">
+      <DependentUpon>201707301941300_CreateDescriptionToResults.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201707301947245_ModifyParticipantsInGroup.cs" />
+    <Compile Include="Migrations\201707301947245_ModifyParticipantsInGroup.Designer.cs">
+      <DependentUpon>201707301947245_ModifyParticipantsInGroup.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\groups.cs" />
-    <Compile Include="Models\GroupsWithNumberOfParticipants.cs" />
+    <Compile Include="Models\AccessLogins.cs" />
+    <Compile Include="Models\DescriptionToResults.cs" />
+    <Compile Include="Models\Groups.cs" />
+    <Compile Include="Models\ViewModels\GroupsWithNumberOfParticipants.cs" />
     <Compile Include="Models\PokiContext.cs" />
-    <Compile Include="Models\participants.cs" />
-    <Compile Include="Models\Persons.cs" />
-    <Compile Include="Models\results.cs" />
+    <Compile Include="Models\ParticipantsInGroup.cs" />
+    <Compile Include="Models\Participants.cs" />
+    <Compile Include="Models\Results.cs" />
     <Compile Include="Models\TestPsych.cs" />
     <Compile Include="Models\ViewModels\RegisterParticipant.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -300,8 +350,8 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\GetPersons.cshtml" />
     <Content Include="Views\Home\Participants.cshtml" />
-    <Content Include="Views\Home\GetGroups.cshtml" />
     <Content Include="Views\Home\GroupsWithDetails.cshtml" />
+    <Content Include="Views\Home\GetGroups.cshtml" />
     <Content Include="Views\Home\RegisterParticipant.cshtml" />
   </ItemGroup>
   <ItemGroup>
@@ -328,6 +378,42 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201707111546013_PsychTestAddVirtual.resx">
       <DependentUpon>201707111546013_PsychTestAddVirtual.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201707291649301_RenameGroups.resx">
+      <DependentUpon>201707291649301_RenameGroups.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201707291750322_RenameParticipantsInGroup.resx">
+      <DependentUpon>201707291750322_RenameParticipantsInGroup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201707291752548_RenameParticipants.resx">
+      <DependentUpon>201707291752548_RenameParticipants.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201707291756361_RenameResults.resx">
+      <DependentUpon>201707291756361_RenameResults.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201707301406003_CreateAccessLogins.resx">
+      <DependentUpon>201707301406003_CreateAccessLogins.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201707301441045_ConnectResultsWithParticipantsInGroup.resx">
+      <DependentUpon>201707301441045_ConnectResultsWithParticipantsInGroup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201707301516485_CorrectRelationsResults.resx">
+      <DependentUpon>201707301516485_CorrectRelationsResults.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201707301527437_ModifyRelationInResults.resx">
+      <DependentUpon>201707301527437_ModifyRelationInResults.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201707301554054_changerelations.resx">
+      <DependentUpon>201707301554054_changerelations.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201707301926477_AddPytaniaInResults.resx">
+      <DependentUpon>201707301926477_AddPytaniaInResults.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201707301941300_CreateDescriptionToResults.resx">
+      <DependentUpon>201707301941300_CreateDescriptionToResults.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201707301947245_ModifyParticipantsInGroup.resx">
+      <DependentUpon>201707301947245_ModifyParticipantsInGroup.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -14,7 +14,7 @@ namespace poki.Models
 
     public int ID { get; set; }
     public int PersonID { get; set; }
-    public virtual Persons Persons { get; set; }
+    public virtual Participants Persons { get; set; }
     public int Result { get; set; }
 
 

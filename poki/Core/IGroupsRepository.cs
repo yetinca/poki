@@ -2,9 +2,9 @@
 
 namespace poki.Core
 {
-  public interface IGroupsRepository:IRepository<groups>
+  public interface IGroupsRepository:IRepository<Groups>
   {
-    groups GetGroupWithParticipants(int id);
+    Groups GetGroupWithParticipants(int id);
    GroupsWithNumberOfParticipants  GetGroupWithNumber(int id);
 
   }

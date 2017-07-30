@@ -46,16 +46,16 @@ namespace poki.Controllers
        return View(_unitOfWork.Persons.GetPersonResults(id));
     }
 
-    public ActionResult GetGroups(int id) {
+    public ActionResult GroupsWithDetails(int id) {
 
-      var grupy = _unitOfWork.groups.GetGroupWithNumber(id);
-      return View(grupy);
+      var grupy = _unitOfWork.Groups.GetGroupWithNumber(id);
+      return View("GroupsWithDetails",grupy);
         }
 
-    public ActionResult GroupsWithDetails()
+    public ActionResult GetGroups()
     {
 
-      return View(_unitOfWork.groups.GetAll());
+      return View("GetGroups",_unitOfWork.Groups.GetAll());
     }
 
     public ActionResult RegisterParticipant()
@@ -67,7 +67,7 @@ namespace poki.Controllers
     {
       if (ModelState.IsValid)
       {
-        Persons per = new Persons();
+        Participants per = new Participants();
 
         per.Name = model.Name;
         per.PESEL = model.PESEL;

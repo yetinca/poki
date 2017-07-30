@@ -13,39 +13,42 @@
       this.Configuration.LazyLoadingEnabled = false;
     }
 
-    public virtual DbSet<groups> groups { get; set; }
-    public virtual DbSet<participants> participants { get; set; }
-    public virtual DbSet<Persons> Persons { get; set; }
-    public virtual DbSet<results> results { get; set; }
+    public virtual DbSet<Groups> Groups { get; set; }
+    public virtual DbSet<ParticipantsInGroup> ParticipantsInGroup { get; set; }
+    public virtual DbSet<Participants> Participants { get; set; }
+    public virtual DbSet<Results> Results { get; set; }
     public virtual DbSet<TestPsych> TestPsych { get; set; }
+    public virtual DbSet<AccessLogins> AccessLogins { get; set; }
+    public virtual DbSet<DescriptionToResults> DescriptionToResults { get; set; }
 
     protected override void OnModelCreating(DbModelBuilder modelBuilder)
     {
-      modelBuilder.Entity<groups>()
-          .HasMany(e => e.participants)
-          .WithRequired(e => e.groups)
-          .HasForeignKey(e => e.GrupaID)
+      
+      modelBuilder.Entity<Groups>()
+          .HasMany(e => e.ParticipantsInGroup)
+          .WithRequired(e => e.Groups)
+          .HasForeignKey(e => e.GroupsID)
           .WillCascadeOnDelete(false);
 
-      modelBuilder.Entity<Persons>()
+      modelBuilder.Entity<Participants>()
           .Property(e => e.NickName)
           .IsFixedLength();
 
-      modelBuilder.Entity<Persons>()
+      modelBuilder.Entity<Participants>()
           .Property(e => e.PESEL)
           .IsFixedLength();
 
-      modelBuilder.Entity<Persons>()
-          .HasMany(e => e.participants)
-          .WithRequired(e => e.Persons)
-          .HasForeignKey(e => e.PersonID)
+      modelBuilder.Entity<Participants>()
+          .HasMany(e => e.ParticipantsInGroup)
+          .WithRequired(e => e.Participants)
+          .HasForeignKey(e => e.ParticipantsID)
           .WillCascadeOnDelete(false);
 
-      modelBuilder.Entity<Persons>()
-          .HasMany(e => e.results)
-          .WithRequired(e => e.Persons)
-          .HasForeignKey(e => e.ParticipantID)
-          .WillCascadeOnDelete(false);
+      //modelBuilder.Entity<Results>()
+      //    .HasMany(e => e.ParticipantsInGroup)
+      //    .WithRequired(e => e.)
+      //    .HasForeignKey(e => e.ParticipantID)
+      //    .WillCascadeOnDelete(false);
     }
   }
 }

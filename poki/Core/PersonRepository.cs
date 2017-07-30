@@ -4,7 +4,7 @@ using poki.Models;
 
 namespace poki.Core
 {
-  public class PersonRepository:Repository<Persons>, IPersonRepository
+  public class PersonRepository:Repository<Participants>, IPersonRepository
   {
     public PersonRepository(PokiContext context) : base(context)
     {
@@ -13,9 +13,9 @@ namespace poki.Core
     {
       get { return Context as PokiContext; }
     }
-    public Persons GetPersonResults(int ID)
+    public Participants GetPersonResults(int ID)
     {
-      return PokiContext.Persons.Include(a => a.results).SingleOrDefault(a => a.ID == ID);
+      return PokiContext.Participants.Include(a => a.Results).SingleOrDefault(a => a.ID == ID);
     }
   }
 }

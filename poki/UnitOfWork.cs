@@ -15,12 +15,12 @@ namespace poki
     {
       _context = context;
       Persons = new PersonRepository(_context);
-      groups = new GroupsRepository(_context);
+      Groups = new GroupsRepository(_context);
 
     }
     
       public IPersonRepository Persons { get; private set; }
-      public IGroupsRepository groups { get; private set; }
+      public IGroupsRepository Groups { get; private set; }
 
 
     public void Save()
