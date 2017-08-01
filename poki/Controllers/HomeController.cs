@@ -70,6 +70,7 @@ namespace poki.Controllers
         Participants per = new Participants();
 
         per.Name = model.Name;
+        per.NickName = model.NickName;
         per.PESEL = model.PESEL;
         _unitOfWork.Persons.Add(per);
         _unitOfWork.Save();

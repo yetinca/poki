@@ -1,7 +1,14 @@
 ﻿@model IEnumerable<poki.Models.Participants>
 
 <div>
-  <h2>Wykaz osób w systemie</h2>
+  <div class="row">
+    <div class="col-sm-6">
+      <h2>Wykaz osób w systemie</h2>
+    </div>
+    <div class="col-sm-6">
+      <button type="button" class="btn btn-primary pull-right" onclick="location.href='/Home/RegisterParticipant'">Dodaj osobę</button>
+    </div>
+    </div>
   <div class="table-responsive">
     <table  id="Persons" class="table table-bordered">
       <thead>
@@ -21,7 +28,10 @@
 
           </tr>
         }
+        
       </tbody>
  </table>
   </div>
+</div>
+<div>
 </div>

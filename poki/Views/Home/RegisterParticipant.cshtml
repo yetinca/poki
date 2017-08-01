@@ -1,15 +1,23 @@
 ﻿@model poki.Models.ViewModels.RegisterParticipant
 
-<h2>RegisterParticipant</h2>
+<h2>Dodawanie osoby</h2>
 
 @using (Html.BeginForm("AddParticipant", "Home", FormMethod.Post))
 {
   <div>
+    @Html.LabelFor(a=> a.Name)
     @Html.TextBoxFor(a => a.Name, new { @class = "form-control" })
   </div>
   <div>
+    @Html.LabelFor(a => a.PESEL)
     @Html.TextBoxFor(a => a.PESEL, new { @class = "form-control" })
   </div>
+  <div>
+    @Html.LabelFor(a => a.NickName)
+    @Html.TextBoxFor(a => a.NickName, new { @class = "form-control" })
+  </div>
+  <p></p>
+
   <button class="btn btn-primary">Zapisz</button>
 }
 
