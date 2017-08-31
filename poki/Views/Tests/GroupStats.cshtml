@@ -1,0 +1,9 @@
+﻿@model int
+@Scripts.Render("~/bundles/Charts")
+
+<h2>GroupStats</h2>
+
+<div style="width: 75%">
+  <canvas id="canvas"></canvas>
+</div>
+@Html.Hidden("participantInGroupID",Model)

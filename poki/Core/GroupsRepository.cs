@@ -1,4 +1,5 @@
-﻿using System.Data.Entity;
+﻿using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using poki.Models;
 
@@ -17,7 +18,7 @@ namespace poki.Core
 
     public Groups GetGroupWithParticipants(int id)
     {
-      return PokiContext.Groups.Include(a => a.ParticipantsInGroup).SingleOrDefault(a => a.ID == id);
+      return PokiContext.Groups.Include(a => a.ParticipantsInGroup.Select(c=> c.Participants)).SingleOrDefault(a => a.ID == id);
     }
     public GroupsWithNumberOfParticipants GetGroupWithNumber(int id)
     {
@@ -28,6 +29,13 @@ namespace poki.Core
 
 
       return grupa;
+    }
+
+   public IEnumerable<Groups> GetGroupsNotDeleted()
+    {
+      var grupy = PokiContext.Groups.Where(a => a.IsDeleted == false);
+
+      return grupy;
     }
   }
 }

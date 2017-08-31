@@ -1,0 +1,69 @@
+﻿@model IEnumerable<poki.Models.Participants>
+@Scripts.Render("~/bundles/AvailableParticipants")
+
+<h2>Dodawanie dostępnych użytkowników do grupy @ViewBag.nrgrupy</h2>
+
+<div>
+  <div class="row">
+    <div class="col-sm-6">
+      <h2>Wykaz dostępnych osób w systemie</h2>
+    </div>
+    <div class="col-sm-6">
+      <button type="button" class="btn btn-primary pull-right" onclick="location.href='/Home/RegisterParticipant'">Dodaj nową osobę</button>
+    </div>
+  </div>
+  <div class="table-responsive">
+    <table id="Persons" class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Nazwisko</th>
+          <th>Ksywka</th>
+          <th>Zdjęcie</th>
+          <th><span class="glyphicon glyphicon-plus"></span></th>
+         @* <th><span class="glyphicon glyphicon-trash"></span></th>*@
+        </tr>
+      </thead>
+      <tbody>
+        @foreach (var c in Model)
+        {
+          <tr class="available-participants" data-id="@c.ID">
+            <td>@c.Name</td>
+            <td>@c.NickName </td>
+         
+            <td width="60">
+              @{ if (c.Picture != null)
+                  {
+                    var base64 = Convert.ToBase64String(c.Picture);
+                    var imgscr = string.Format("data:image/gif;base64,{0}", base64);
+                    <img src="@imgscr" class="img-rounded" />
+                  }
+                  else
+                  {
+
+                    <img src="~/Img/team_profile.jpg" class="img-rounded" />
+                  }
+              }
+
+            </td>
+     
+
+            <td width="20">
+              @Html.CheckBox("plusik", false, new {data_grupa = ViewBag.nrgrupy })
+            
+        
+            </td>
+            @*<td width="20">
+              @Html.CheckBox("ptaszek", false, new { data_id = c.ID })
+            </td>*@
+          </tr>
+                  }
+
+      </tbody>
+    </table>
+    <p id="available-p"></p>
+    <button class="btn btn-primary available-button" id="zapisz-do-grupy">Zapisz</button>
+  </div>
+
+</div>
+<div>
+</div>

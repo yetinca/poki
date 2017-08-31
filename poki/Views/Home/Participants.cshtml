@@ -8,30 +8,67 @@
     <div class="col-sm-6">
       <button type="button" class="btn btn-primary pull-right" onclick="location.href='/Home/RegisterParticipant'">Dodaj osobę</button>
     </div>
-    </div>
+  </div>
   <div class="table-responsive">
-    <table  id="Persons" class="table table-bordered">
+    <table id="Persons" class="table table-bordered">
       <thead>
         <tr>
           <th>Nazwisko</th>
           <th>Ksywka</th>
           <th>Pesel</th>
+          <th>Zdjęcie</th>
+          <th>Usuń</th>
+          <th>Edytuj</th>
         </tr>
       </thead>
       <tbody>
-        @foreach(var c in Model)
+        @foreach (var c in Model)
         {
-          <tr class="participant-item" data-id="@c.ID" >
+          <tr class="participant-details" data-id="@c.ID" >
             <td>@c.Name</td>
             <td>@c.NickName</td>
             <td>@c.PESEL</td>
+            <td width="60">
+              @{ if (c.Picture != null)
+                  {
+                    var base64 = Convert.ToBase64String(c.Picture);
+                    var imgscr = string.Format("data:image/gif;base64,{0}", base64);
+                    <img src="@imgscr" class="img-rounded" />
+                  }
+                  else
+                  {
+
+                   <img src="~/Img/team_profile.jpg"  class="img-rounded" />
+                  }
+              }
+              
+            </td>
+            <td width="40" >
+              @using(Html.BeginForm("DeleteParticipant","Home", FormMethod.Post)) {
+                @Html.Hidden("ParticipantID",c.ID)
+              <button  class="btn btn-danger">
+                <span class="glyphicon glyphicon-trash"></span>
+              </button>
+              }
+            </td>
+        
+            <td width="40" >
+              @*@using (Html.BeginForm("GetParticipant", "Home", FormMethod.Get))
+              {
+                @Html.Hidden("ID", c.ID)}*@
+                <a class="btn btn-success" href="@Url.Action("GetParticipant",new { id=c.ID })" >
+                  <span class="glyphicon glyphicon-pencil"></span>
+                </a>
+              
+            </td>
 
           </tr>
         }
-        
+
       </tbody>
- </table>
+    </table>
   </div>
+
 </div>
 <div>
 </div>

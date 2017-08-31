@@ -1,23 +1,46 @@
 ﻿@model poki.Models.ViewModels.RegisterParticipant
+@Scripts.Render("~/bundles/Participants")
 
 <h2>Dodawanie osoby</h2>
 
-@using (Html.BeginForm("AddParticipant", "Home", FormMethod.Post))
+@using (Html.BeginForm("AddParticipant", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
-  <div>
+  
+  <div class="form-group">
     @Html.LabelFor(a=> a.Name)
-    @Html.TextBoxFor(a => a.Name, new { @class = "form-control" })
-  </div>
-  <div>
+    <div class="input-group">
+      <span class="input-group-addon glyphicon glyphicon-user" style="position:initial"></span>
+      @Html.TextBoxFor(a => a.Name, new { @class = "form-control" })
+      @Html.ValidationMessageFor(a => a.Name)
+      </div>
+    </div>
+  <div class="form-group ">
     @Html.LabelFor(a => a.PESEL)
-    @Html.TextBoxFor(a => a.PESEL, new { @class = "form-control" })
-  </div>
-  <div>
+    <div class="input-group">
+      <span class="input-group-addon glyphicon glyphicon-option-horizontal" style="position:initial"></span>
+      @Html.TextBoxFor(a => a.PESEL, new { @maxlength = "11", @class = "form-control" })
+      @Html.ValidationMessageFor(a => a.PESEL)
+      </div>
+    </div>
+  <div class="form-group">
     @Html.LabelFor(a => a.NickName)
-    @Html.TextBoxFor(a => a.NickName, new { @class = "form-control" })
+    <div class="input-group">
+      <span class="input-group-addon glyphicon glyphicon-sunglasses" style="position:initial"></span>
+      @Html.TextBoxFor(a => a.NickName, new { @class = "form-control" })
+      @Html.ValidationMessageFor(a => a.NickName)
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-3">
+      <div class="kv-avatar center-block text-center" style="width:200px">
+    
+        <input id="avatar-2" class="file-loading" type="file" name="Image1" />
+      </div>
+    </div>
   </div>
   <p></p>
-
+  
   <button class="btn btn-primary">Zapisz</button>
 }
+
 

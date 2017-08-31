@@ -12,10 +12,12 @@
         public Participants()
         {
             ParticipantsInGroup = new HashSet<ParticipantsInGroup>();
-            Results = new HashSet<Results>();
+            //Results = new HashSet<Results>();
         }
 
         public int ID { get; set; }
+
+        public bool IsDeleted { get; set; }
 
         [Required]
         [StringLength(50)]
@@ -34,7 +36,7 @@
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ParticipantsInGroup> ParticipantsInGroup { get; set; }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Results> Results { get; set; }
+        //[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        //public virtual ICollection<Results> Results { get; set; }
     }
 }

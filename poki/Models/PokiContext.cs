@@ -20,6 +20,9 @@
     public virtual DbSet<TestPsych> TestPsych { get; set; }
     public virtual DbSet<AccessLogins> AccessLogins { get; set; }
     public virtual DbSet<DescriptionToResults> DescriptionToResults { get; set; }
+    public virtual DbSet<Question> Questions { get; set; }
+    public virtual DbSet<ProperResult> ProperResults { get; set; }
+    public virtual DbSet<ProperResultsQuestion> ProperResultsQuestions { get; set; }
 
     protected override void OnModelCreating(DbModelBuilder modelBuilder)
     {

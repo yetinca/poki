@@ -1,32 +1,59 @@
 ﻿@model poki.Models.GroupsWithNumberOfParticipants
-
-@{
-    ViewBag.Title = "GetGroups";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
+@Scripts.Render("~/bundles/GroupWithDetails")
 
 <div>
-  <h2>Szczegóły grupy @Model.Name</h2>
+  <h2>Szczegóły grupy <strong>@Model.Name</strong> </h2>
+  <button type="button" class="btn btn-success text-right" data-toggle="modal" data-target="#modalPesel">Zacznij Test</button>
+  <br />
+  <p></p>
   <div class="table-responsive">
-    <table id="Groups" class="table table-bordered" >
+    <table id="Groups" class="table table-bordered">
       <thead>
         <tr>
           <th>Nazwa</th>
           <th>Data powstania grupy</th>
-          <th>Ilość osób w grupie</th>
+          <th>Liczba osób w grupie</th>
         </tr>
       </thead>
       <tbody>
 
-          <tr class="group-participants" data-id="@Model.ID" >
-            <td>@Model.Name</td>
-            <td>@Model.Data</td>
-            <td>@Model.Number</td>
+        <tr class="group-participants" data-id="@Model.ID">
+          <td>@Model.Name</td>
+          <td>@Model.Data</td>
+          <td>@Model.Number</td>
 
-          </tr>
-        
+        </tr>
+
       </tbody>
     </table>
   </div>
 </div>
+<div id="modalPesel" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Podaj swój PESEL</h4>
+      </div>
+      <div class="modal-body">
+        <div class="form-group" >
+          <input class="form-control input-validation-error" data-val="true" data-val-length="Pole PESEL musi być ciągiem o maksymalnej długości 11." data-val-length-max="11" data-val-regex="Pole PESEL musi pasować do wyrażenia regularnego „\d{11}”." data-val-regex-pattern="\d{11}" data-val-required="Pole PESEL jest wymagane." id="pesel" maxlength="11" name="pesel" type="text" value="">
+          @Html.Hidden("GroupID", Model.ID)
+          <p></p>
+          <div class="col-sm-offset-1 col-sm-4">
+            <button id="input-pesel" class="btn btn-primary">Dalej</button>
+          </div>
+        </div>
+      </div>
+      <br />
+      <p>  </p>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal"> Zamknij </button>
+      </div>
+    </div>
+  </div>
+</div>
+
 

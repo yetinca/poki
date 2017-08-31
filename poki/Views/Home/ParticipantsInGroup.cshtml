@@ -1,0 +1,51 @@
+﻿@model poki.Models.Groups
+
+<div>
+  <div class="row">
+    <div class="col-sm-10">
+      <h2>Wykaz osób w <b> @Model.Name (@Model.CreationDate)</b></h2>
+    </div>
+    <div class="col-sm-2">
+      <button class="btn btn-primary" onclick="location.href='/Home/AvailableParticipants/' + @Model.ID">
+        Dodaj osoby
+      </button>
+    </div>
+  </div>
+  <div class="table-responsive">
+    <table id="Persons" class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Nazwisko</th>
+          <th>Ksywka</th>
+          <th>Pesel</th>
+          <th>Wyniki</th>
+          <th><span class="glyphicon glyphicon-trash"></span></th>
+        </tr>
+      </thead>
+      <tbody>
+        @foreach (var c in @Model.ParticipantsInGroup)
+        {
+          <tr class="participant-item" data-id="@c.Participants.ID">
+            <td>@c.Participants.Name</td>
+            <td>@c.Participants.NickName</td>
+            <td>@c.Participants.PESEL</td>
+            <td width="40" align="center">
+              <a class="btn btn-success" href="@Url.Action("GetParticipant",new { id=c.ID })">
+                <span class="glyphicon glyphicon-stats"></span>
+              </a>
+            </td>
+            <td width="20">
+              @Html.CheckBox("plusik", false, new { data_grupa = ViewBag.nrgrupy })
+              @Html.Hidden("data_id", c.ID)
+                          </td>
+          </tr>
+        }
+
+      </tbody>
+    </table>
+  </div>
+
+</div>
+<div>
+</div>
+

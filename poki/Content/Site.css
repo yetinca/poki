@@ -10,11 +10,11 @@
 }
 
 /* Set width on the form input elements since they're 100% wide by default */
-input,
+/*input,
 select,
 textarea {
     max-width: 280px;
-}
+}*/
 .navbar-header:hover .navbar-brand:hover {
   color: #86a8e8;
 }
@@ -27,6 +27,72 @@ textarea {
 
 #Persons > tbody > tr:hover {
   background-color: #a6c1f5;
+  
+}
+
+ #Groups > tbody > tr:hover {
+  background-color: #a6c1f5;
   cursor: pointer;
 }
 
+
+.pytanie1 .custom-handle {
+  width: 3em;
+  height: 1.6em;
+  top: 50%;
+  margin-top: -.8em;
+  text-align: center;
+  line-height: 1.6em;
+}
+.kv-avatar .krajee-default.file-preview-frame, .kv-avatar .krajee-default.file-preview-frame:hover {
+  margin: 0;
+  padding: 0;
+  border: none;
+  box-shadow: none;
+  text-align: center;
+}
+
+.kv-avatar .file-input {
+  display: table-cell;
+  max-width: 220px;
+}
+
+.kv-reqd {
+  color: red;
+  font-family: monospace;
+  font-weight: normal;
+}
+
+#Persons > tbody > tr > td > img {
+  max-height: 70px;
+  max-width: 70px;
+  vertical-align: middle;
+}
+
+.ui-state-default, .ui-widget-content .ui-state-default {
+  background-color: #ededed
+}
+.ui-corner-all {
+  border-bottom-right-radius: 12px;
+  border-bottom-left-radius: 12px;
+  border-top-right-radius: 12px;
+  border-top-left-radius: 12px;
+  background-color: #aac7ff
+}
+.ui-state-active .ui-state-focus .ui-state-hover .ui-widget-content{
+  color:black;
+  background:#ededed;
+  border:none;
+}
+.well-mod{
+  width:100%
+}
+
+*:focus {
+  outline: none !important;
+}
+
+.tooltip-inner {
+  max-width: none;
+  white-space: nowrap;
+}

@@ -4,8 +4,13 @@ namespace poki
 {
   public interface IUnitOfWork: IDisposable
   {
-    IPersonRepository Persons { get; }
+    IParticipantRepository Participants { get; }
     IGroupsRepository Groups { get; }
+    IParticipantsinGroupRepository ParticipantsInGroup { get; }
+    IResultsRepository Results { get; }
+    IProperResultRepository ProperResults { get; }
+    IProperResultsQuestionRepository ProperResultsQuestion { get; }
+    IQuestionRepository Question { get; }
 
     void Save();
 

@@ -1,0 +1,78 @@
+﻿@model poki.Models.ViewModels.Test1
+@using poki.Enums
+@Scripts.Render("~/bundles/Testy")
+<h2 class="text-right page-header">Test nr 1</h2>
+
+@foreach (var pr in @Model.Group.ParticipantsInGroup)
+{
+  <div class="row">
+    <div class="col-md-2">
+      <h2>@pr.Participants.NickName</h2>
+    </div>
+    <div class="col-md-2">
+      @{ if (pr.Participants.Picture != null)
+          {
+            var base64 = Convert.ToBase64String(pr.Participants.Picture);
+            var imgscr = string.Format("data:image/gif;base64,{0}", base64);
+            <img src="@imgscr" class="img-rounded img-responsive" />
+          }
+          else
+          {
+
+            <img src="~/Img/team_profile.jpg" class="img-rounded img-responsive" />
+          }
+      }
+    </div>
+  </div>
+  <br />
+          foreach (var q in @Model.Questions)
+          {
+            <div class="data-opis" data-QuestionId="@q.ID" data-ParticipantInGroupID="@pr.ID">
+              <div class="row">
+                <div class="col-md-8">
+
+                  <br />
+                  <label class="well well-sm well-mod" rel="txtTooltip" data-placement="top" data-toggle="tooltip" title="@q.QuestionDescription">@q.QuestionText</label>
+
+                </div>
+              </div>
+
+
+              @if (q.Type == (byte)QuestionType.Numeric)
+              {
+                <div class="row">
+                  <div class="col-md-8">
+                    <div class="pytanie1">
+                      <div class=" custom-handle ui-slider-handle ui-corner-all"></div>
+                    </div>
+                  </div>
+                </div>
+                <br />
+
+              }
+              else
+              {
+
+                <div class="row">
+                  <div class="col-md-8">
+                    <div class="form-group">
+                      <textarea type="text" class="form-control textarea-mod" name="@q.ID"></textarea>
+                    </div>
+                  </div>
+                </div>
+                <p></p>
+
+              }
+
+            </div>
+
+
+          }
+          <hr />
+          }
+
+@Html.HiddenFor(a => a.AssessingParticipantID)
+@Html.HiddenFor(a=> a.StartTime)
+
+<button id="button-save" type="button" class="btn btn-primary">Zapisz</button>
+<br />

@@ -1,0 +1,26 @@
+﻿@model poki.Models.ViewModels.AddGroupViewModel
+@{
+    ViewBag.Title = "AddNewGroup";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Dodawanie nowej Grupy</h2>
+@using (Html.BeginForm("AddGroup", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+  <div class="row">
+    <div class="col-md-4">
+      <div class="form-group">
+        @Html.Label("Nazwa nowej grupy")
+        <div class="input-group">
+          <span class="input-group-addon glyphicon glyphicon-lock" style="position:initial"></span>
+          @Html.TextBoxFor(a => a.Name, new { @class = "form-control" })
+
+        </div>
+      </div>
+    </div>
+  </div>
+    <p></p>
+
+    <button class="btn btn-primary">Zapisz</button>
+}
+

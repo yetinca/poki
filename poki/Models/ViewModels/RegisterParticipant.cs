@@ -11,12 +11,16 @@ namespace poki.Models.ViewModels
 
     [Required]
     [StringLength(11)]
-    [RegularExpression("/d{11}")]
+    [RegularExpression("\\d{11}")]
     public string PESEL { get; set; }
 
-    [Required]
+    [Required(ErrorMessage ="Dowolna Ksywka")]
     [Display(Name = "Ksywka")]
     [StringLength(10)]
     public string NickName { get; set; }
-  }
+
+    public byte[] Picture { get; set; }
+
+    public int Slider { get; set; }
+      }
 }
