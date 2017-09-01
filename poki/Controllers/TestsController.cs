@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Web.Mvc;
 using poki.Models;
 using poki.Models.ViewModels;
@@ -69,7 +70,15 @@ namespace poki.Controllers
         ProperResultsQuestion prq = new ProperResultsQuestion();
         prq.ProperResultID = pr.ID;
         prq.QuestionID = z.QuestionID;
+        if(z.QuestionText!= null)
+        {
+          prq.QuestionValue = null;
+        }
+        else
+        {
         prq.QuestionValue = (byte)z.QuestionValue;
+        }
+        
         prq.QuestionText = z.QuestionText;
         prq.AssessedParticipantsInGroupsID = z.ParticipantInGroupID;
         _unitOfWork.ProperResultsQuestion.Add(prq);
@@ -90,23 +99,45 @@ namespace poki.Controllers
     {
       GroupStatsViewModel participantStats = new GroupStatsViewModel();
 
-      participantStats.Labels.Add("p1");
-      participantStats.Labels.Add("p2");
-      participantStats.Labels.Add("p3");
-      participantStats.Labels.Add("p4");
-      participantStats.Labels.Add("p5");
+      var labels = _unitOfWork.Question.GetAll().Where(a=>a.Type==1).Select(u=>u.QuestionText);
 
-      participantStats.OcenaGrupy.Add(1);
-      participantStats.OcenaGrupy.Add(4);
-      participantStats.OcenaGrupy.Add(5.6M);
-      participantStats.OcenaGrupy.Add(7.9M);
-      participantStats.OcenaGrupy.Add(2.4M);
+      participantStats.Labels = labels.ToList();
 
-      participantStats.OcenaWlasna.Add(1);
-      participantStats.OcenaWlasna.Add(3);
-      participantStats.OcenaWlasna.Add(7.6M);
-      participantStats.OcenaWlasna.Add(4.9M);
-      participantStats.OcenaWlasna.Add(3.4M);
+     var OcenaWlasna = _unitOfWork.ProperResultsQuestion.GetAll()
+        .Join(_unitOfWork.ProperResults.GetAll(), c => c.ProperResultID, o => o.ID, (c, o) => new { c.QuestionID, c.QuestionValue, c.AssessedParticipantsInGroupsID, o.AssessingParticipantsInGroupsID, c.Questions.Type })
+        .Where(a => a.AssessedParticipantsInGroupsID == participantInGroupID && a.Type == 1 && a.AssessingParticipantsInGroupsID == participantInGroupID)
+        .Select(qt=>Convert.ToDecimal(qt.QuestionValue)).ToList();
+
+      participantStats.OcenaWlasna = OcenaWlasna;
+
+      var OcenaGrupy = _unitOfWork.ProperResultsQuestion.GetAll()
+        .Join(_unitOfWork.ProperResults.GetAll(),c=>c.ProperResultID,o=>o.ID,(c,o)=> new {c.QuestionID, c.QuestionValue ,c.AssessedParticipantsInGroupsID,o.AssessingParticipantsInGroupsID,c.Questions.Type })
+        .Where(a => a.AssessedParticipantsInGroupsID == participantInGroupID && a.Type == 1 && a.AssessingParticipantsInGroupsID != participantInGroupID)
+        .GroupBy(c=>c.QuestionID).Select(
+        g=> new {avr= g.Average(a=>a.QuestionValue)}).Select(g=>Convert.ToDecimal(g.avr))
+        .ToList();
+
+      participantStats.OcenaGrupy = OcenaGrupy;
+      participantStats.Ksywki = db.ProperResultsQuestions.Where(a => a.AssessedParticipantsInGroupsID == participantInGroupID).Select(c => c.AssessedParticipantsInGroups.Participants.NickName);
+        //_unitOfWork.ProperResultsQuestion.GetAll().Where(a => a.AssessedParticipantsInGroupsID == participantInGroupID).Select(c=>c.AssessedParticipantsInGroups.Participants.NickName);
+      participantStats.Opisy= _unitOfWork.ProperResultsQuestion.GetAll().Where(a => a.AssessedParticipantsInGroupsID == participantInGroupID && a.Questions.Type==2).Select(c => c.QuestionText);
+      //participantStats.Labels.Add("p1");
+      //participantStats.Labels.Add("p2");
+      //participantStats.Labels.Add("p3");
+      //participantStats.Labels.Add("p4");
+      //participantStats.Labels.Add("p5");
+
+      //participantStats.OcenaGrupy.Add(1);
+      // participantStats.OcenaGrupy.Add(4);
+      // participantStats.OcenaGrupy.Add(5.6M);
+      // participantStats.OcenaGrupy.Add(7.9M);
+      // participantStats.OcenaGrupy.Add(2.4M);
+
+      //participantStats.OcenaWlasna.Add(1);
+      //participantStats.OcenaWlasna.Add(3);
+      //participantStats.OcenaWlasna.Add(7.6M);
+      //participantStats.OcenaWlasna.Add(4.9M);
+      //participantStats.OcenaWlasna.Add(3.4M);
 
       return Json(participantStats);
 

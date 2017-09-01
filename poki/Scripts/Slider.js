@@ -39,7 +39,12 @@
             type: "POST",
             success: function (result) {
 
-
+                if (result == null) {
+                    alert("Wybierz osoby")
+                }
+                else {
+                    location.href = "/Home/GetGroups/";
+                }
             },
             error: function (xhr, ajaxOptions, thrownError) {
 

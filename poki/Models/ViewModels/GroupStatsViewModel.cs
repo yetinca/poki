@@ -17,5 +17,7 @@ namespace poki.Models.ViewModels
     public List<string> Labels { get; set; }
     public List<decimal> OcenaWlasna { get; set; }
     public List<decimal> OcenaGrupy { get; set; }
+    public IEnumerable<string> Opisy { get; set; }
+    public IEnumerable<string> Ksywki { get; set; }
   }
 }

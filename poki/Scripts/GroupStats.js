@@ -59,6 +59,13 @@
             else {
                 location.href = "/Tests/Test1/" + result;
             }
+            //$.each(result, function (i, row) {
+            //    for (var i in row) {
+            //        alert(row.Ksywki)
+            //    $("#opisy-ksywki").append('<p>' + row.Ksywki + ' </p> <div class="well" >' + row.Opisy + '</div >')
+            //    }
+            });
+           
 
         },
         error: function (xhr, ajaxOptions, thrownError) {
